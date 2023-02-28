@@ -12,6 +12,7 @@ table.classList.add('overflow-y-scroll', 'scrollbar-thin', 'scrollbar-thumb-blue
 fetch('https://chikanga.pythonanywhere.com/api/books/')
 .then(response => response.json())
 .then(data => {
+    console.log(data);
   // Create a new paragraph element
   const paragraph = document.getElementById('apidata');
   
