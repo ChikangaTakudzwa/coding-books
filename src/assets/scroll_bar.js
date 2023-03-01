@@ -9,19 +9,20 @@ table.classList.add('overflow-y-scroll', 'scrollbar-thin', 'scrollbar-thumb-blue
 
 // DISPLAYING DATA AT REST(API CALL)
 
-fetch('https://chikanga.pythonanywhere.com/api/books/')
-.then(response => response.json())
-.then(data => {
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'https://chikanga.pythonanywhere.com/api/books/');
+xhr.onload = function() {
+  if (xhr.status === 200) {
+    var data = JSON.parse(xhr.responseText);
+    // Do something with the data returned by the API
     console.log(data);
-  // Create a new paragraph element
-  const paragraph = document.getElementById('apidata');
+    const paragraph = document.getElementById('apidata');
   
-  // Set the text content of the paragraph element to the data received
-//   paragraph.textContent = JSON.stringify(data);
-  paragraph.innerText = JSON.stringify(data);
-  
-})
-.catch(error => {
-  // Handle any errors that occurred
-  console.error(error);
-});
+    // Set the text content of the paragraph element to the data received
+    paragraph.innerText = JSON.stringify(data);
+    
+  } else {
+    console.log('Request failed.  Returned status of ' + xhr.status);
+  }
+};
+xhr.send();
