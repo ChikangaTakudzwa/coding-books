@@ -70,7 +70,7 @@ function deleteItem(id) {
     }
     location.reload();
   })
-  .catch(error => console.error(error));
+  .catch(error => console.error('An error occurred while deleting the item:', error.message));
 }
 
 
