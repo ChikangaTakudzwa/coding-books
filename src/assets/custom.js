@@ -22,7 +22,7 @@ fetch("https://chikanga.pythonanywhere.com/api/books/")
       const year = item.date.substring(0, 4);
 
       var row = document.createElement('tr');
-
+      row.classList.add('text-sm', 'text-gray-600', 'dark:text-gray-200')
       // add table data from each item in the array.column in the json object
       row.innerHTML = '<td>' + item.id + '</td><td>' + item.title + '</td><td>' + item.muridzi + '</td><td>' + item.price + '</td><td>' 
       + item.after_tax + '</td><td>' + year + '</td>' + '</td><td><a href="#" data-id="' + item.id + '">Delete</a></td>';
