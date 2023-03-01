@@ -81,6 +81,11 @@ form.addEventListener('submit', (event) => {
   .then(response => {
     // Handle response from server
     console.log(response);
+    if (!response.ok) {
+      throw new Error('Post not successful');
+    }
+    // if response was ok reload page
+    location.reload();
   })
   .catch(error => {
     // Handle errors
