@@ -76,7 +76,10 @@ form.addEventListener('submit', (event) => {
   const url = 'https://chikanga.pythonanywhere.com/api/books/';
   fetch(url, {
     method: 'POST',
-    body: formData
+    body: JSON.stringify(formData)
+  })
+  .then(formData => {
+    console.log('Book created:', formData);
   })
   .then(response => {
     // Handle response from server
