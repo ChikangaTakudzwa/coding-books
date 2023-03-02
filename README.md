@@ -1,4 +1,4 @@
-![alt text](image URL)
+![alt text](coding-books.PNG)
 # Overview
 
 "Coding Books" is a web application that allows users to view and add coding books to a database. The app includes a table that displays entries in the database, including the author, title, price, and year of publication. Users can also use a form to add a new book to the database. The app uses JavaScript's Fetch API to interact with a [Django Rest Framework API](https://github.com/ChikangaTakudzwa/api-project) that serves requests.
