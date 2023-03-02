@@ -5,12 +5,7 @@ fetch("https://chikanga.pythonanywhere.com/api/books/")
   .then(data => {
 
     console.log(data);
-    // Get the paragraph element with ID 'apidata'
-    const paragraph = document.getElementById('apidata');
-  
-    // Set the text content of the paragraph element to the data received
-    // paragraph.innerText = JSON.stringify(data);
-  
+ 
     // Table code
 
     var table = document.getElementById("mytable");
@@ -18,7 +13,7 @@ fetch("https://chikanga.pythonanywhere.com/api/books/")
 
     data.forEach(function(item) {
 
-      // slice the year string to eg 2001
+      // slice the year string to 4 chars eg. 2001
       const year = item.date.substring(0, 4);
 
       var row = document.createElement('tr');
@@ -68,33 +63,6 @@ function deleteItem(id) {
 }
 
 // POST DATA TO REST(API CALL)
-
-// const form = document.querySelector('form');
-// form.addEventListener('submit', (event) => {
-//   event.preventDefault();
-//   const formData = new FormData(form);
-//   const url = 'https://chikanga.pythonanywhere.com/api/books/';
-//   fetch(url, {
-//     method: 'POST',
-//     body: JSON.stringify(formData),
-//   })
-//   .then(formData => {
-//     console.log('Book created:', formData);
-//   })
-//   .then(response => {
-//     // Handle response from server
-//     console.log(response);
-//     if (!response.ok) {
-//       throw new Error('Post not successful');
-//     }
-//     // if response was ok reload page
-//     location.reload();
-//   })
-//   .catch(error => {
-//     // Handle errors
-//     console.error(error.message)
-//   });
-// });
 
 const form = document.querySelector('form');
 form.addEventListener('submit', postData);
