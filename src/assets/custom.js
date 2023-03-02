@@ -69,19 +69,58 @@ function deleteItem(id) {
 
 // POST DATA TO REST(API CALL)
 
+// const form = document.querySelector('form');
+// form.addEventListener('submit', (event) => {
+//   event.preventDefault();
+//   const formData = new FormData(form);
+//   const url = 'https://chikanga.pythonanywhere.com/api/books/';
+//   fetch(url, {
+//     method: 'POST',
+//     body: JSON.stringify(formData),
+//   })
+//   .then(formData => {
+//     console.log('Book created:', formData);
+//   })
+//   .then(response => {
+//     // Handle response from server
+//     console.log(response);
+//     if (!response.ok) {
+//       throw new Error('Post not successful');
+//     }
+//     // if response was ok reload page
+//     location.reload();
+//   })
+//   .catch(error => {
+//     // Handle errors
+//     console.error(error.message)
+//   });
+// });
+
 const form = document.querySelector('form');
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', postData);
+
+function postData(event) {
   event.preventDefault();
+
   const formData = new FormData(form);
-  const url = 'https://chikanga.pythonanywhere.com/api/books/';
-  fetch(url, {
+  const postData = {};
+
+  // Convert FormData to JSON
+  for (const [key, value] of formData.entries()) {
+    postData[key] = value;
+  }
+  const jsonData = JSON.stringify(postData);
+
+  // Send POST request with JSON data
+  fetch('https://chikanga.pythonanywhere.com/api/books/', {
     method: 'POST',
-    body: JSON.stringify(formData),
-  })
-  .then(formData => {
-    console.log('Book created:', formData);
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: jsonData
   })
   .then(response => {
+    response.json();
     // Handle response from server
     console.log(response);
     if (!response.ok) {
@@ -90,11 +129,14 @@ form.addEventListener('submit', (event) => {
     // if response was ok reload page
     location.reload();
   })
+  .then(data => {
+    console.log(data);
+  })
   .catch(error => {
-    // Handle errors
-    console.error(error.message)
+    console.error(error.message);
   });
-});
+}
+
 
 
 
